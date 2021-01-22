@@ -2,3 +2,20 @@ body {
   margin: 0;
   padding: 10px;
 }
+.users-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+@media (max-width: 800px) {
+  .users-list {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .users-list {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+}

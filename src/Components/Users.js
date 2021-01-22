@@ -3,16 +3,21 @@ import UserCard from './UserCard';
 import axios from 'axios';
 
 const Users = () => {
-  const [user, setUser] = useState();
+  const [users, setUsers] = useState([]);
   useEffect(() => {
     axios
-      .get('/user')
-      .then((res) => console.log(res))
+      .get('/users')
+      .then((res) => setUsers(res.data))
       .catch((err) => console.log(err));
   }, []);
+  console.log(users);
   return (
-    <div>
-      <UserCard />
+    <div className='users-list'>
+      {/* ---------- map on users list ---------- */}
+      {users.length > 0
+        ? users.map((user, i) => <UserCard key={user._id} {...user} />)
+        : true}
+        
     </div>
   );
 };

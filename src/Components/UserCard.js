@@ -6,7 +6,7 @@ import { Modal } from 'react-bootstrap';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { AiFillEdit } from 'react-icons/ai';
 
-const UserCard = () => {
+const UserCard = ({ name, age, email, occupation, img }) => {
   // show or hide modal hook and functions
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -15,16 +15,13 @@ const UserCard = () => {
   return (
     <div className='card' id={true ? 'black' : 'white'}>
       <span onClick={handleShow}>
-        <img
-          src='https://i.pinimg.com/originals/d5/25/61/d52561e104775f407908c8c395afc6fa.jpg'
-          alt='user'
-        />
+        <img src={img} alt='user' />
       </span>
-      <h4 className='user-name'>Kim Ji-soo</h4>
-      <h6 className='user-rank'>actor</h6>
-      <p className='user-age'>age {27} yo</p>
+      <h4 className='user-name'>{name}</h4>
+      <h6 className='user-rank'>{occupation}</h6>
+      <p className='user-age'>age {age} yo</p>
       <a href='' className='user-email'>
-        mail@gmail.com
+        {email}
       </a>
       <br />
       <AiFillEdit className='edit-icon icons' />
