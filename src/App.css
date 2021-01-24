@@ -2,6 +2,8 @@ body {
   margin: 0;
   padding: 10px;
 }
+.app {
+}
 .users-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

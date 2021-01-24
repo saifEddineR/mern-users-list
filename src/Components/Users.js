@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import UserCard from './UserCard';
 import axios from 'axios';
+import UserInput from './UserInput';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -17,7 +18,6 @@ const Users = () => {
       {users.length > 0
         ? users.map((user, i) => <UserCard key={user._id} {...user} />)
         : true}
-        
     </div>
   );
 };

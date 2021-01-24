@@ -1,0 +1,20 @@
+.add-user {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  font-size: 30px;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+}
+.add-user button {
+  border: none;
+  padding: 0;
+}
+.add-user:hover {
+  transform: translate(5px, -5px) scale(1.5);
+  color: dodgerblue;
+}
+#submit-btn {
+  float: right;
+}
