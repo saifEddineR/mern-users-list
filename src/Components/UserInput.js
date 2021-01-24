@@ -1,5 +1,6 @@
 import '../css/addUser.css';
 import React, { useState } from 'react';
+import axios from 'axios';
 import { MdPersonAdd } from 'react-icons/md';
 import { Modal, Form, Input, Button, Checkbox } from 'antd';
 import 'antd/dist/antd.css';
@@ -20,6 +21,7 @@ const UserInput = () => {
   const handleOk = () => {
     setIsModalVisible(false);
     console.log(newUser);
+    axios.post('/users/newUser', newUser).then((res) => console.log(res));
   };
   const handleCancel = () => {
     setIsModalVisible(false);
@@ -42,7 +44,7 @@ const UserInput = () => {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <form method='POST' action='/users/newUser'>
+        <form>
           <Form.Item
             label='Full Name'
             rules={[
