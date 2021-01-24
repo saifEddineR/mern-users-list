@@ -5,12 +5,20 @@ import { Modal } from 'react-bootstrap';
 // react icons import
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { AiFillEdit } from 'react-icons/ai';
+import axios from 'axios';
+import EditUser from './EditUser';
 
-const UserCard = ({ name, age, email, occupation, img }) => {
+const UserCard = ({ _id, name, age, email, occupation, img }) => {
   // show or hide modal hook and functions
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const deleteUser = () => {
+    axios
+      .delete(`/users/deleteUser/${_id}`)
+      .then((res) => console.log(res.data));
+  };
+  let userO = { _id, name, age, email, occupation, img };
 
   return (
     <div className='card' id={true ? 'black' : 'white'}>
@@ -24,8 +32,15 @@ const UserCard = ({ name, age, email, occupation, img }) => {
         {email}
       </a>
       <br />
-      <AiFillEdit className='edit-icon icons' />
-      <RiDeleteBin5Line className='delete-icon icons' />
+      <button className='card-btn edit-btn'>
+        {/* <AiFillEdit className='edit-icon icons' /> */}
+        <EditUser {...userO} />
+      </button>
+      <button className='card-btn delete-btn' onClick={deleteUser}>
+        <a href='/'>
+          <RiDeleteBin5Line className='delete-icon icons' />
+        </a>
+      </button>
     </div>
   );
 };

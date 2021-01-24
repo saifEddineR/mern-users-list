@@ -1,17 +1,19 @@
+import '../css/userCard.css';
 import '../css/addUser.css';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { MdPersonAdd } from 'react-icons/md';
+import { AiFillEdit } from 'react-icons/ai';
 import { Modal, Form } from 'antd';
 import 'antd/dist/antd.css';
 
-const UserInput = () => {
+const EditUser = ({ _id, name, age, occupation, email, img }) => {
   const [newUser, setNewUser] = useState({
-    name: '',
-    age: '',
-    occupation: '',
-    email: '',
-    img: '',
+    name: name,
+    age: age,
+    occupation: occupation,
+    email: email,
+    img: img,
   });
   const [isModalVisible, setIsModalVisible] = useState(false);
   // modal show/hide hook and functions ----------------------
@@ -22,9 +24,9 @@ const UserInput = () => {
     setIsModalVisible(false);
     console.log(newUser);
     axios
-      .post('/users/newUser', newUser)
+      .put(`/users/updateUser/${_id}`, newUser)
       .then((res) => console.log(res))
-      .catch((err) => alert('error : you missed a required '));
+      .catch((err) => alert('error : you missed a required'));
     setNewUser({
       name: '',
       age: '',
@@ -44,10 +46,10 @@ const UserInput = () => {
   };
 
   return (
-    <div className='add-user'>
-      <button type='primary' onClick={showModal} className='modal-btn'>
-        <MdPersonAdd />
-      </button>
+    <div>
+      <span onClick={showModal} className='card-btn edit-btn'>
+        <AiFillEdit className='edit-icon icons' />
+      </span>
       <Modal
         title='Add User'
         visible={isModalVisible}
@@ -144,4 +146,4 @@ const UserInput = () => {
   );
 };
 
-export default UserInput;
+export default EditUser;

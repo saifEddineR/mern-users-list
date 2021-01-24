@@ -7,9 +7,15 @@
   padding: 0;
   cursor: pointer;
 }
-.add-user button {
+.modal-btn {
   border: none;
   padding: 0;
+  background-color: #00000000;
+  cursor: pointer;
+}
+.modal-btn:focus {
+  outline: none;
+  box-shadow: none;
 }
 .add-user:hover {
   transform: translate(5px, -5px) scale(1.5);
